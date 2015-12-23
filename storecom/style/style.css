@@ -3,21 +3,21 @@ html
 
 *
 {
-	margin-bottom: 0;
-	margin-right: 0;
-	margin-top: 0;
+
 }
 
 body
-{ font: normal .80em 'trebuchet ms', arial, sans-serif;
-  background: #F5F5EE;
-  color: #555;}
+{
+	font: normal .80em 'trebuchet ms', arial, sans-serif;
+	background: #F5F5EE;
+	color: #000;
+}
 
 p
 {
 	padding: 0 0 20px 0;
 	line-height: 1.7em;
-	text-align: center;
+	text-align: left;
 }
 
 img
@@ -35,9 +35,11 @@ h1, h2, h3
   color: #000;}
 
 h2
-{ font-size: 160%;
-  padding: 9px 0 5px 0;
-  color: #009FBC;}
+{
+	font-size: 160%;
+	padding: 9px 0 5px 0;
+	color: #000000;
+}
 
 h3
 {
@@ -48,16 +50,20 @@ h3
 }
 
 h4, h6
-{ color: #009FBC;
-  padding: 0 0 5px 0;
-  font: normal 110% arial;
-  text-transform: uppercase;}
+{
+	color: #000000;
+	padding: 0 0 5px 0;
+	font: normal 110% arial;
+	text-transform: capitalize;
+}
 
 h5, h6
-{ color: #888;
-  font: normal 95% arial;
-  letter-spacing: normal;
-  padding: 0 0 15px 0;}
+{
+	color: #000;
+	font: normal 95% arial;
+	letter-spacing: normal;
+	padding: 0 0 15px 0;
+}
 
 a, a:hover
 { outline: none;
@@ -96,19 +102,30 @@ ol li
 { margin: 0 0 11px 0;}
 
 .left
-{ float: left;
-  width: auto;
-  margin-right: 10px;}
+{
+	float: left;
+	width: auto;
+	margin-right: 20px;
+	margin-left: 20px;
+}
 
 .right
-{ float: right; 
-  width: auto;
-  margin-left: 10px;}
+{
+	float: right;
+	width: auto;
+	margin-left: 10px;
+	margin-right: 10px;
+}
 
 .center
-{ display: block;
-  text-align: center;
-  margin: 20px auto;}
+{
+	display: block;
+	text-align: left;
+	margin-bottom: 0px;
+	margin-left: 550px;
+	margin-right: 350px;
+	margin-top: 0px;
+}
 
 #main, #logo, #menubar, #site_content, #footer
 {
@@ -272,14 +289,19 @@ ul#menu li a:hover
   line-height: 1.5em;}
 
 #footer
-{ width: 100%;
-  font-family: 'trebuchet ms', sans-serif;
-  font-size: 100%;
-  height: 80px;
-  padding: 28px 0 5px 0;
-  text-align: center; 
-  background: #3B3939 url(footer.png) repeat-x;
-  color: #A8AA94;}
+{
+	width: 100%;
+	font-family: 'trebuchet ms', sans-serif;
+	font-size: 100%;
+	height: 80px;
+	text-align: center;
+	background: #3B3939 url(footer.png) repeat-x;
+	color: #A8AA94;
+	padding-bottom: 5px;
+	padding-left: 520px;
+	padding-right: 0;
+	padding-top: 28px;
+}
 
 #footer p
 { line-height: 1.7em;

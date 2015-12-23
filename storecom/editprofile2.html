@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>StoreCom</title>
+  
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+ <script>
+		 
+	function check(form)
+  {
+		var passs = document.getElementById("pass").value;
+		var cpasss = document.getElementById("Cpass").value;
+		if(passs === cpasss){
+			form.action='index.html'
+		} else{
+			alert('Password Doesnt Match');
+		}
+		
+	}
+
+		function _(x)
+		{
+		   return document.getElementById(x);
+		}
+		function voidl(){
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+		vars[key] = value;
+		});
+		var formName =_("editform");
+		var html = "" ;
+		
+			html = " <div class='form_settings'>";
+			html+= "   <p><span>First Name       </span><input type='text' required name='FirstName'     value='"+vars["FirstName"]+"'/></p>"
+			html+= "   <p><span>Last Name		 </span><input type='text' required name='LastName'      value='"+vars["LastName"]+"'  /></p>"
+			html+= "   <p><span>Billing Address   </span><input type='text'  name='BillingAddress'     	 value='"+vars["BillingAddress"]+"' /></p>"
+			html+= "   <p><span>Billing City	 </span><input type='text'  name='BillingCity'       	 value='"+vars["BillingCity"]+"' /></p>"
+			html+= "   <p><span>Billing State    </span><input type='text'  name='BillingState'		     value='"+vars["BillingState"]+"'/></p>"
+			html+= "   <p><span>Billing Zip	     </span><input type='text'  name='BillingZip'  	  		 value='"+vars["BillingZip"]+"'/></p>"
+			html+= "   <p><span>Email 		     </span><input type='email'required name='Email' 		 value='"+vars["Email"]+"' /></p>"
+			html+= "   <p><span>Password </span><input type='password'   required name='Password' 	   	 value='"+vars["Password"]+"'/></p>"
+			html+= "   <p><span>Confirm Password </span><input required type='password' name='ConfirmPassword'  value='"+vars["ConfirmPassword"]+"'/></p>"
+			html+= "   <p><span>Gender </span><select id='id' name='name'><option value='1'>Male </option><option value='2'>Female </option></select></p>"
+			html+= "   <p style='padding-top: 15px'><span>&nbsp;</span><input class='submit' type='submit' name='name' value='Submit'  onclick=\"return check(document.myForm);\"/></p>"
+			html+= "  </div>";			
+		  formName.innerHTML=html;
+		
+		}
+		   window.addEventListener("load", voidl, false);
+
+ </script>
+  
+  </head>
+
+<body>
+<?PHP
+echo "hello";
+?>
+  <div id="main">
+    <div id="header">	
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Store<span class="logo_colour">Com</span></a></h1>
+          <h2>compare, select and buy your mobile</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="index.html">Home</a></li>
+          <li><a href="productlist.html">Product List</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li class="selected"><a href="editprofile.html">Edit Profile</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+	<div id="content">
+        <!-- insert the page content here -->
+        
+        <h2>Edit Profile </h2>
+        <form  name= "myForm" id = "editform" action="editPHP2.php" method="post">
+		
+        </form>
+      </div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+      <div id="content">
+        <!-- insert the page content here -->
+      </div>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+    <p><a href="index.html">Home</a> | <a href="productlist.html">Product List</a> | <a href="signup.html">Sign Up</a> | <a href="editprofile.php">Edit Profile</a> | <a href="contact.html">Contact Us</a></p>
+	</div>
+  </div>
+</body>
+</html>

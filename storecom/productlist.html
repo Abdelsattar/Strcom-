@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>StoreCom</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Store<span class="logo_colour">Com</span></a></h1>
+          <h2>compare, select and buy your mobile</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="index.html">Home</a></li>
+		  <li class="selected"><a href="productlist.html">Product List</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="editprofile.html">Edit Profile</a></li>
+          <li><a href="signin.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+      <form action="product.php" method="post" >
+      <div id="content">
+		<p>&nbsp;</p>
+		<h2><span>Select Category </span>
+		  <select name="name">
+		    <option value="1">Sony</option>
+		    <option value="2">Samsung</option>
+            <option value="3">Nokia</option>
+            <option value="4">All Products</option>
+	      </select>
+	    </h2>
+		<button type="submit">select</button>
+		<br><br><br>
+		to choose products, just select it
+      </div>
+	  </form>
+	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div id="content_footer"></div>
+    <div id="footer">
+    <p><a href="index.html">Home</a> | <a href="productlist.html">Product List</a> | <a href="signup.html">Sign Up</a> | <a href="editprofile.html">Edit Profile</a> | <a href="signin.html">Login</a></p>
+	</div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,20 @@
-<!DOCTYPE HTML>
-<html>
-
+<?php
+	session_start();
+	$time=$_SESSION["date"];
+	$con = mysqli_connect("localhost","root","","storecom");
+	$sql = "UPDATE orderprocessing SET Processed='1' WHERE dateTime = '$time'";
+	if (!mysqli_query($con,$sql))
+	{
+		die('Error: ' . mysqli_error($con));
+	}
+	$strSQL1 = "select * from orderprocessing where dateTime = '$time'";
+	$Result1 = mysqli_query($con,$strSQL1);
+	$trans="";
+	while($strrow = mysqli_fetch_array($Result1))
+	{
+		$tran=$strrow['TransactionID'];
+	}
+	$out='<html>
 <head>
   <title>StoreCom</title>
   <meta name="description" content="website description" />
@@ -21,35 +35,31 @@
       </div>
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="index.html">Home</a></li>
-          <li class="selected"><a href="signup.html">Sign Up</a></li>
           <li><a href="productlist.html">Product List</a></li>
+          <li class="selected"><a href="signup.html">Sign Up</a></li>
           <li><a href="editprofile.html">Edit Profile</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
     </div>
       <div id="content">
-        <!-- insert the page content here -->
-        
-        <h2>Form Elements</h2>
-        <form action="#" method="post">
-          <div class="form_settings">
-            <p><span>Form field example</span><input type="text" name="name" value="" /></p>
-            <p><span>Textarea example</span><textarea rows="8" cols="50" name="name"></textarea></p>
-            <p><span>Checkbox example</span><input class="checkbox" type="checkbox" name="name" value="" /></p>
-            <p><span>Dropdown list example</span><select id="id" name="name"><option value="1">Example 1</option><option value="2">Example 2</option></select></p>
-            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="name" value="button" /></p>
-          </div>
+	  <b> your transaction number is: '.$tran.' please do not forget it<b>
+	  
+	  ';
+	  $out2='</div>
         </form>
       </div>
 	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
     <div id="content_footer"></div>
     <div id="footer">
-      <p><a href="index.html">Home</a> | <a href="examples.html">Examples</a> | <a href="page.html">A Page</a> | <a href="another_page.html">Another Page</a> | <a href="contact.html">Contact Us</a></p>
-    </div>
+      <p><a href="index.html">Home</a> | <a href="productlist.html">Product List</a> | <a href="signup.html">Sign Up</a> | <a href="editprofile.html">Edit Profile</a> | <a href="contact.html">Contact Us</a></p>
+	  </div>
   </div>
 </body>
 </html>
+	 ';
+	 $out=$out.$out2;
+	 echo $out;
+?>

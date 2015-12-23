@@ -8,36 +8,55 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" type="text/css" href="style/style.css" />
-</head>
+
+  <script>
+  function check(form)
+  {
+		var passs = document.getElementById("pass").value;
+		var cpasss = document.getElementById("Cpass").value;
+		if(passs === cpasss){
+			form.action='index.html'
+		} else{
+			alert('Password Doesnt Match');
+		}
+		
+}
+</script> 
+  
+  </head>
 
 <body>
-<?PHP
-echo "hello";
-?>
   <div id="main">
     <div id="header">	
       <div id="logo">
         <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
           <h1><a href="index.html">Store<span class="logo_colour">Com</span></a></h1>
           <h2>compare, select and buy your mobile</h2>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
           <li><a href="index.html">Home</a></li>
           <li><a href="productlist.html">Product List</a></li>
           <li><a href="signup.html">Sign Up</a></li>
-          <li class="selected"><a href="editprofile.php">Edit Profile</a></li>
+          <li class="selected"><a href="editprofile.html">Edit Profile</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
     </div>
+	<div id="content">
+        <h2>Edit Profile </h2>
+        <form  name= "myForm" id = "signupform" action="editPHP.php" onsubmit="return validatePassword()" method="post">
+		    <div class='form_settings'>
+			<p><span>Eneter your Phone   </span><input type='text' required name='Phone'    placeholder='Phone'/></p>
+
+			   <p style='padding-top: 15px'><span>&nbsp;</span><input class='submit' type='submit' name='name' value='Get Info' /></p>
+			 </div>
+        </form>
+      </div>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
       <div id="content">
-        <!-- insert the page content here -->
       </div>
     </div>
     <div id="content_footer"></div>

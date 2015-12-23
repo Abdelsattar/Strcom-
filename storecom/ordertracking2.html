@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>StoreCom</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+
+   <script>
+ 
+		function _(x)
+		{
+		   return document.getElementById(x);
+		}
+		function voidl(){
+		var vars = {};
+		var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+		vars[key] = value;
+		});
+		var formName =_("signupform");
+		var html = "" ;
+		
+			html = " <div class='form_settings'>";
+			html+= "   <p><span>First Name       </span><input type='text' required name='FirstName'     value='"+vars["FirstName"]+"'/></p>"
+			html+= "   <p><span>Last Name		 </span><input type='text' required name='LastName'      value='"+vars["LastName"]+"'  /></p>"
+			html+= "   <p><span>Billing Address  </span><input type='text'  name='BillingAddress'     	 value='"+vars["BillingAddress"]+"' /></p>"
+			html+= "   <p><span>Billing City	 </span><input type='text'  name='BillingCity'       	 value='"+vars["BillingCity"]+"' /></p>"
+			html+= "   <p><span>Billing State    </span><input type='text'  name='BillingState'		     value='"+vars["BillingState"]+"'/></p>"
+			html+= "   <p><span>Billing Zip	     </span><input type='text'  name='BillingZip'  	  		 value='"+vars["BillingZip"]+"'/></p>"
+			html+= "   <p><span>Phone	         </span><input type='text' required name='Phone'		 value='"+vars["Phone"]+"'  /></p>"
+			html+= "   <p><span>Email 		     </span><input type='email'required name='Email' 		 value='"+vars["Email"]+"' /></p>"
+			html+= "   <p><span>Password </span><input type='password'   required name='Password' 	   	 value='"+vars["Password"]+"'/></p>"
+			html+= "   <p><span>Confirm Password </span><input required type='password' name='ConfirmPassword'  value='"+vars["ConfirmPassword"]+"'/></p>"
+			html+= "   <p><span>Gender </span><select id='id' name='name'><option value='1'>Male </option><option value='2'>Female </option></select></p>"
+			html+= "   <p style='padding-top: 15px'><span>&nbsp;</span><input class='submit' type='submit' name='name' value='Submit' /></p>"
+			html+= "  </div>";			
+		formName.innerHTML=html;
+		
+		}
+		   window.addEventListener("load", voidl, false);
+
+ </script>
+  
+  </head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Store<span class="logo_colour">Com</span></a></h1>
+          <h2>compare, select and buy your mobile</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="index.html">Home</a></li>
+		  <li><a href="productlist.html">Product List</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="editprofile.html">Edit Profile</a></li>
+          <li><a href="signin.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+      <div id="content">
+       <br><br><br><br><br><br><br><br><br>
+        
+        <h2>Order Tracking </h2>
+        <form  name= "myForm" action="signPHP.php" onsubmit="return validatePassword()" method="post">
+          <div class="form_settings">
+		   <?php
+		 if(isset($_POST['submit'])){
+			
+			echo "Hello world!<br>";
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "storecom";
+
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+			$Transaction_ID   = $_POST['TransactionID'];
+		
+			$sql = "SELECT(*) FROM  orderprocessing ";
+			$res = mysqli_query($conn,$sql);
+			$check = False ;
+			if (mysqli_num_rows($res) > 0) {
+			  while($row = mysqli_fetch_assoc($res)) {
+	 		     if($TransactionID ===$row["TransactionID"]){
+					$ProductID  		 = $row['ProductID'];
+					$Quantity  			 = $row['Quantity'];
+					$dateTime			 = $row['dateTime'];
+					$Processed  		 = $row['Processed'];
+					$Shipped			 = $row['Shipped'];
+					$DateShipped		 = $row['DateShipped'];
+					$ShippingCompany     = $row['ShippingCompany'];
+					$check = true;
+					}
+				}
+			} 
+			$sql = "SELECT(*) FROM  product Where ProductID = $ProductID  ";
+			$res = mysqli_query($conn,$sql);
+			$check = False ;
+			if (mysqli_num_rows($res) > 0) {
+			  while($row = mysqli_fetch_assoc($res)) {
+	 		     if($ProductID ===$row["ProductID"]){
+					$ProductName   = $row['ProductName'];
+					}
+				}
+			} 
+			echo "<p> Product Name :" . $ProductName "</p>
+			<p> Quantity : " . $Quantity . "</p> ";
+			if ( $Shipped == 1 )
+            echo "<p> Your Product Shipped with Company " . $ShippingCompany ." At Date Time " .DateShipped . "</p>";
+			
+			else			
+			echo "<p> Your Product didn't Shipped yet </p>";
+			
+			$conn->close();
+		}
+	?> 
+		  
+          </div>
+        </form>
+      </div>
+	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+	<br><br><br><br><br><br><br><br><br>
+    <div id="content_footer"></div>
+    <div id="footer">
+    <p><a href="index.html">Home</a> | <a href="productlist.html">Product List</a> | <a href="signup.html">Sign Up</a> | <a href="editprofile.html">Edit Profile</a> | <a href="signin.html">Login</a></p>
+	</div>
+  </div>
+</body>
+</html>

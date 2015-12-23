@@ -6,8 +6,8 @@
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="style/style.css" />
-</head>
+  <link rel="stylesheet" type="text/css" href="style/style.css" />  
+  </head>
 
 <body>
   <div id="main">
@@ -30,12 +30,51 @@
         </ul>
       </div>
     </div>
-      
       <div id="content">
         <!-- insert the page content here -->
+        
+        <h2>Order Tracking </h2>
+        <form  name= "myForm"  method="post">
+          <div class="form_settings">
+		   <?php
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "storecom";
+
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+			}
+			$TransactionID   = $_POST['TransactionID'];
+			echo "<p> Transaction ID : ".$TransactionID."</p>";
+			$sql = "SELECT * FROM  orderprocessing WHERE TransactionID ='$TransactionID' ";
+					
+					$res = mysqli_query($conn,$sql);
+					$row = mysqli_fetch_assoc($res);
+					$Quantity  			 = $row['Quantity'];
+					$dateTime			 = $row['dateTime'];
+					$Processed  		 = $row['Processed'];
+					$Shipped			 = $row['Shipped'];
+					$DateShipped		 = $row['DateShipped'];
+					$ShippingCompany     = $row['ShippingCompany'];
+			echo "<p> Ordered Quantity : " . $Quantity . "</p> ";
+			if ( $Shipped == 1 )
+            echo "<p> Your Product Shipped with Company " . $ShippingCompany ." At Date Time " .$DateShipped . "</p>";
+			
+			else			
+			echo "<p> Your Product didn't Shipped yet </p>";
+			
+			$conn->close();
+		
+	?> 
+		  
+          </div>
+        </form>
       </div>
 	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
+	<br><br><br><br><br><br><br><br>
     <div id="content_footer"></div>
     <div id="footer">
     <p><a href="index.html">Home</a> | <a href="productlist.html">Product List</a> | <a href="signup.html">Sign Up</a> | <a href="editprofile.html">Edit Profile</a> | <a href="contact.html">Contact Us</a></p>
